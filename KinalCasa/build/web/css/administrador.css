@@ -1,0 +1,478 @@
+/* Estilos mejorados para el panel de tareas - Temática Inmobiliaria */
+:root {
+    --primary-color: #2c5530; /* Verde bosque - confianza y naturaleza */
+    --secondary-color: #8fbc8f; /* Verde salvia - tranquilidad y hogar */
+    --accent-color: #d4af37; /* Dorado - lujo y elegancia */
+    --background-color: #f8f9fa; /* Blanco grisáceo suave */
+    --text-color: #2c2c2c; /* Gris muy oscuro */
+    --light-text-color: #ffffff; /* Texto claro sobre fondos oscuros */
+    --link-color: #1e4620; /* Verde oscuro para enlaces */
+    --hover-link-color: #0f2410; /* Verde muy oscuro en hover */
+    --card-bg: #ffffff; /* Fondo blanco para tarjetas */
+    --border-color: #e0e0e0; /* Gris claro para bordes */
+    --muted-text: #7a7a7a;
+    --success-bg: #e8f5e8; /* Verde muy claro para éxito */
+    --success-border: #b2d4b2; /* Verde claro para bordes de éxito */
+    --success-text: #2d5a32; /* Verde oscuro para texto de éxito */
+}
+
+/* Dashboard Layout */
+.container-dashboard {
+    display: flex;
+    gap: 3rem;
+    padding: 3rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.dashboard-left {
+    flex: 1;
+    background: linear-gradient(135deg, var(--card-bg) 0%, #fafbfa 100%);
+    border-radius: 15px;
+    padding: 3rem;
+    box-shadow: 0 10px 30px rgba(44, 85, 48, 0.1);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.dashboard-left::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 15px 15px 0 0;
+}
+
+.heading-1 {
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+    text-align: center;
+    font-weight: 600;
+    position: relative;
+}
+
+.heading-1::after {
+    content: '';
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(135deg, var(--accent-color), #b8860b);
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* Task Form */
+.task-form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    flex: 1;
+    margin: 2rem 0;
+}
+
+.task-list li {
+    background: linear-gradient(135deg, rgba(143, 188, 143, 0.08) 0%, rgba(143, 188, 143, 0.03) 100%);
+    border: 1px solid rgba(143, 188, 143, 0.2);
+    color: var(--text-color);
+    border-left: 4px solid var(--secondary-color);
+    padding: 1.2rem 1.5rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    font-size: 1.4rem;
+    cursor: pointer;
+    position: relative;
+}
+
+.task-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    transition: width 0.3s ease;
+    border-radius: 10px 0 0 10px;
+}
+
+.task-list li:hover {
+    background: linear-gradient(135deg, rgba(143, 188, 143, 0.15) 0%, rgba(143, 188, 143, 0.08) 100%);
+    transform: translateX(8px);
+    box-shadow: 0 4px 15px rgba(44, 85, 48, 0.1);
+}
+
+.task-list li:hover::before {
+    width: 4px;
+}
+
+.task-list input[type="checkbox"] {
+    margin-right: 1.5rem;
+    width: 20px;
+    height: 20px;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.task-list label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-weight: 500;
+}
+
+/* Task Summary */
+.task-summary {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--success-bg) 0%, #f0f8f0 100%);
+    border: 2px solid var(--success-border);
+    border-radius: 12px;
+    color: var(--success-text);
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.6rem;
+    position: relative;
+}
+
+.task-summary::before {
+    content: '📊';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--card-bg);
+    padding: 0.5rem;
+    border-radius: 50%;
+    font-size: 1.8rem;
+}
+
+.task-summary span {
+    color: var(--accent-color);
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+/* Submit Button */
+.btn-submit-report {
+    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    width: 100%;
+    font-size: 1.6rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--light-text-color);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-submit-report::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-submit-report:hover {
+    background: linear-gradient(135deg, var(--link-color), var(--primary-color));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(44, 85, 48, 0.3);
+}
+
+.btn-submit-report:hover::before {
+    left: 100%;
+}
+
+/* Dashboard Right Section */
+.dashboard-right {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-cruds {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* Card Categories con nuevos backgrounds inmobiliarios */
+.card-category {
+    padding: 3rem 2rem;
+    border-radius: 15px;
+    color: var(--light-text-color);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-category::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(44, 85, 48, 0.8), rgba(143, 188, 143, 0.6));
+    transition: opacity 0.3s ease;
+}
+
+.card-category:hover::after {
+    background: linear-gradient(135deg, rgba(44, 85, 48, 0.9), rgba(143, 188, 143, 0.7));
+}
+
+/* Backgrounds específicos para cada categoría */
+.propiedades-bg {
+    background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.constructoras-bg {
+    background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.ventas-bg {
+    background-image: url('https://images.unsplash.com/photo-1553729459-efe14ef6055d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.clientes-bg {
+    background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.agentes-bg {
+    background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.contratos-bg {
+    background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card-category p {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    z-index: 1;
+    position: relative;
+}
+
+.card-category:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.card-category a {
+    text-decoration: none;
+    color: var(--light-text-color);
+    font-size: 1.4rem;
+    display: inline-block;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+    z-index: 1;
+    position: relative;
+    background: rgba(212, 175, 55, 0.9);
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card-category a:hover {
+    background: var(--accent-color);
+    transform: scale(1.05);
+}
+
+/* User Menu Styles */
+.user-menu {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.user-dropdown {
+    position: absolute;
+    top: 120%;
+    right: 0;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(44, 85, 48, 0.2);
+    list-style: none;
+    padding: 1rem 0;
+    margin: 0;
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    border: 1px solid var(--border-color);
+}
+
+.user-dropdown li {
+    padding: 0.8rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.user-dropdown li:hover {
+    background: linear-gradient(135deg, rgba(143, 188, 143, 0.1), rgba(143, 188, 143, 0.05));
+}
+
+.user-dropdown li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.4rem;
+    transition: color 0.3s ease;
+}
+
+.user-dropdown li:hover a {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.user-menu:hover .user-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-5px);
+}
+
+.user-dropdown li a i {
+    font-size: 1.2rem;
+    width: 16px;
+    text-align: center;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 3px solid var(--secondary-color);
+    transition: all 0.3s ease;
+}
+
+.profile-pic:hover {
+    border-color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+/* Admin Section Styles */
+.main-users {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, var(--background-color) 0%, #f0f4f0 100%);
+    min-height: 80vh;
+}
+
+.users-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.users-title {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 3rem;
+    font-weight: 700;
+    position: relative;
+}
+
+.users-title::after {
+    content: '';
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(135deg, var(--accent-color), #b8860b);
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container-dashboard {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .dashboard-left {
+        padding: 2rem;
+    }
+    
+    .container-cruds {
+        grid-template-columns: 1fr;
+    }
+    
+    .card-category {
+        height: 160px;
+        padding: 2rem 1.5rem;
+    }
+    
+    .heading-1 {
+        font-size: 2rem;
+    }
+    
+    .task-list li {
+        font-size: 1.3rem;
+        padding: 1rem 1.2rem;
+    }
+}
